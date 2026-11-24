@@ -1,0 +1,241 @@
+:root {
+  color-scheme: light;
+  --background: #eef3f8;
+  --surface: #ffffff;
+  --text: #182230;
+  --muted: #617083;
+  --primary: #155eef;
+  --primary-hover: #004eeb;
+  --border: #d7e0ea;
+  --success-bg: #eaf8ef;
+  --success-text: #176b3a;
+  --error-bg: #fff0f0;
+  --error-text: #a11b1b;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(21, 94, 239, 0.14), transparent 34rem),
+    var(--background);
+  color: var(--text);
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+}
+
+.contact-card {
+  width: min(980px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid rgba(215, 224, 234, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(31, 48, 74, 0.14);
+}
+
+.contact-card__intro {
+  padding: 56px 46px;
+  color: #ffffff;
+  background: linear-gradient(145deg, #0b4ecc, #173d8f);
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #bcd4ff;
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 5vw, 3.15rem);
+  line-height: 1.02;
+}
+
+.contact-card__intro > p:not(.eyebrow) {
+  margin: 0;
+  color: #dbe7ff;
+  line-height: 1.7;
+}
+
+.advantages {
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.advantages li {
+  position: relative;
+  padding-left: 28px;
+  color: #eef4ff;
+  line-height: 1.5;
+}
+
+.advantages li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #8fb7ff;
+  font-weight: 800;
+}
+
+.contact-form {
+  display: grid;
+  gap: 20px;
+  padding: 48px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+label {
+  font-weight: 650;
+}
+
+label span[aria-hidden="true"] {
+  color: #d92d20;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px 14px;
+  color: var(--text);
+  background: #fbfcfe;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 132px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(21, 94, 239, 0.12);
+}
+
+input:user-invalid,
+textarea:user-invalid {
+  border-color: #d92d20;
+}
+
+small,
+#message-counter {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  color: #445064;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.consent input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: var(--primary);
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 14px 20px;
+  color: #ffffff;
+  background: var(--primary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s, opacity 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.form-status {
+  display: none;
+  border-radius: 12px;
+  padding: 13px 14px;
+  line-height: 1.45;
+}
+
+.form-status.is-visible {
+  display: block;
+}
+
+.form-status.is-success {
+  color: var(--success-text);
+  background: var(--success-bg);
+}
+
+.form-status.is-error {
+  color: var(--error-text);
+  background: var(--error-bg);
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card__intro,
+  .contact-form {
+    padding: 34px 26px;
+  }
+
+  .advantages {
+    display: none;
+  }
+}

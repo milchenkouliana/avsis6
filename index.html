@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Обратная связь</title>
+  <meta name="description" content="Учебная форма обратной связи с отправкой в Telegram">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <section class="contact-card" aria-labelledby="contact-title">
+      <div class="contact-card__intro">
+        <p class="eyebrow">Облачный портал университета</p>
+        <h1 id="contact-title">Форма обратной связи</h1>
+        <p>Заполните поля — сообщение будет проверено и передано администратору сайта.</p>
+
+        <ul class="advantages">
+          <li>Проверка данных в браузере и на сервере</li>
+          <li>Безопасное хранение токена Telegram</li>
+          <li>Публикация по внешнему HTTPS-адресу</li>
+        </ul>
+      </div>
+
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="field">
+          <label for="name">Имя <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" minlength="2" maxlength="60"
+                 autocomplete="name" placeholder="Иван Иванов" required>
+          <small>От 2 до 60 символов.</small>
+        </div>
+
+        <div class="field">
+          <label for="email">Электронная почта <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" maxlength="120"
+                 autocomplete="email" placeholder="student@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="phone">Телефон</label>
+          <input id="phone" name="phone" type="tel" maxlength="25"
+                 autocomplete="tel" placeholder="+7 900 000-00-00"
+                 pattern="[0-9+() -]{7,25}">
+          <small>Необязательное поле.</small>
+        </div>
+
+        <div class="field">
+          <div class="field__label-row">
+            <label for="message">Сообщение <span aria-hidden="true">*</span></label>
+            <span id="message-counter">0 / 1500</span>
+          </div>
+          <textarea id="message" name="message" rows="6" minlength="10" maxlength="1500"
+                    placeholder="Опишите ваш вопрос..." required></textarea>
+          <small>Не менее 10 символов.</small>
+        </div>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Сайт</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label class="consent">
+          <input id="consent" name="consent" type="checkbox" required>
+          <span>Я согласен на обработку данных для ответа на обращение.</span>
+        </label>
+
+        <button id="submit-button" type="submit">
+          <span class="button-text">Отправить сообщение</span>
+          <span class="button-loader" hidden>Отправка…</span>
+        </button>
+
+        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
